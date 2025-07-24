@@ -4,3 +4,5 @@ LLM chats and multi-stage inference.
 
 The app has provision for working with .gguf files, but currently
 still requires LM Studio to export an inference model and an embedding model.
+
+Screenshot ![Source](https://github.com/michaelmangelsdorf/scil/blob/main/scil.png) of the app welcome screen.
