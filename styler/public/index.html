@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Style Tuner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-header">
+        <h1><a href="/">Scene Inference Lab: Style Tuner</a></h1>
+    </div>
+
+    <div class="container">
+        <div class="section" id="model-selection-section">
+            <button type="button" class="collapsible-header" id="model-selection-header">
+                <h2>LM Studio Model Selection</h2>
+                <span class="collapse-icon"></span>
+            </button>
+            <div class="collapsible-content">
+                <div class="form-group">
+                    <label for="model-select">Model for Generation:</label>
+                    <p id="model-preferred-display" class="preferred-model-display hidden"></p>
+                    <div id="model-picker-group">
+                        <select id="model-select">
+                            <option value="">Loading Models...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="agent-selection-section">
+            <h2>1. Select Agent</h2>
+            <div class="form-group">
+                <label for="agent-select">Agent:</label>
+                <select id="agent-select">
+                    <option value="">Loading Agents...</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section" id="dialogs-section">
+            <h2>2. Review Dialogs with Feedback</h2>
+            <div class="listbox-container">
+                <label for="dialog-listbox">Dialogs with comments:</label>
+                <select id="dialog-listbox" size="10"></select>
+            </div>
+            <div id="dialog-details">
+                <div class="form-group">
+                    <label>User Query:</label>
+                    <textarea id="user-query-display" readonly></textarea>
+                </div>
+                 <div class="form-group">
+                    <label>Agent Response:</label>
+                    <textarea id="agent-response-display" readonly></textarea>
+                </div>
+                 <div class="form-group">
+                    <label>Revised Response:</label>
+                    <textarea id="revised-response-display"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label>User Comment:</label>
+                    <textarea id="user-comment-display"></textarea>
+                </div>
+                 <div class="button-group">
+                    <button id="save-dialog-btn">Save Dialog Feedback</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="style-guide-section">
+            <h2>3. Generate and Refine Style Guide</h2>
+            <div class="button-group">
+                <button id="generate-guide-btn" disabled>Generate Style Guide from Dialogs</button>
+            </div>
+            <div class="form-group">
+                <label for="style-guide-text">Agent's Style Guide:</label>
+                <textarea id="style-guide-text" placeholder="The agent's current style guide will appear here. Click 'Generate' to create a new one."></textarea>
+            </div>
+            <div class="button-group">
+                 <button id="save-guide-btn" disabled>Save Style Guide</button>
+            </div>
+            <p id="status-message"></p>
+        </div>
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

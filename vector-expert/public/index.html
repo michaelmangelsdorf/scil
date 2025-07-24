@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene Inference Lab: Vector Expert</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-header">
+        <h1><a href="/">Scene Inference Lab: Vector Expert</a></h1>
+    </div>
+
+    <div class="container">
+        <!-- Combined LM Studio Models Section (Collapsible) -->
+        <div class="section">
+            <button type="button" class="collapsible-header" id="model-selection-header">
+                <h2>LM Studio Models</h2>
+                <span class="collapse-icon"></span>
+            </button>
+            <div class="collapsible-content">
+                <div class="model-picker-group" id="inference-model-picker-group">
+                    <label for="inference-model-select">Select Inference Model:</label>
+                    <div class="model-controls">
+                        <select id="inference-model-select">
+                            <option value="">Loading Models...</option>
+                        </select>
+                        <button id="refresh-inference-models-btn">Refresh</button>
+                    </div>
+                    <p id="inference-model-status"></p>
+                    <p id="selected-inference-model-context-length" class="context-length-text"></p>
+                </div>
+                <p id="inference-model-preferred-display" class="preferred-model-display hidden"></p>
+
+                <div class="model-picker-group" id="embedding-model-picker-group">
+                    <label for="embedding-model-select">Select Embedding Model:</label>
+                    <div class="model-controls">
+                        <select id="embedding-model-select">
+                            <option value="">Loading Models...</option>
+                        </select>
+                        <button id="refresh-embedding-models-btn">Refresh</button>
+                    </div>
+                    <p id="embedding-model-status"></p>
+                    <p id="selected-embedding-model-context-length" class="context-length-text"></p>
+                </div>
+                <p id="embedding-model-preferred-display" class="preferred-model-display hidden"></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Vector Editor</h2>
+            <!-- Removed Scene Select -->
+            <!-- Removed Agent Select -->
+            <div class="form-group">
+                <label for="playwright-agent-select">Select Playwright Agent (for Inference):</label>
+                <select id="playwright-agent-select">
+                    <option value="">Loading Playwright Agents...</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="content-textbox">Content for Embedding / Query:</label>
+                <textarea id="content-textbox" rows="10" class="resizable-textarea" placeholder="Enter text to store as an embedding, or a query for vector search."></textarea>
+            </div>
+            <div class="button-group">
+                <button id="store-embedding-btn">Store</button>
+                <button id="query-embeddings-btn">Query</button>
+                <button id="teach-dialogs-btn">Teach All Dialogs</button>
+                <button id="playwright-query-btn">Playwright Query</button>
+            </div>
+            <div class="spacing-div"></div>
+            <div class="form-group">
+                <label for="query-results-textbox">Query Results:</label>
+                <textarea id="query-results-textbox" rows="10" class="resizable-textarea" readonly placeholder="Vector search results will appear here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Confirmation Modal: This div must be a direct child of <body> for proper full-screen overlay -->
+    <div id="custom-modal" class="modal">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <div class="modal-buttons">
+                <button id="modal-confirm-btn" class="confirm-btn">Confirm</button>
+                <button id="modal-cancel-btn" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript files for ES6 modules -->
+    <script type="module" src="dom-elements.js"></script>
+    <script type="module" src="api-service.js"></script>
+    <script type="module" src="app-logic.js"></script>
+</body>
+</html>

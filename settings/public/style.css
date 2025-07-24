@@ -1,0 +1,262 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.app-header {
+    background-color: #607d8b; /* Blue Grey theme for Settings */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin: 0 auto 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.app-header h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #455a64; /* Darker blue grey for headings */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* NEW: Style for setting description text */
+.setting-description {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+    margin-left: 28px; /* Indent to align with checkbox text */
+}
+
+
+/* NEW: Style for the reset button group */
+.button-group-reset {
+    margin-bottom: 25px; /* Add padding below the reset button */
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+}
+
+.button-group {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start; /* Align buttons to the left */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* Style for the export button group to align horizontally */
+.button-group-export {
+    margin-top: 15px;
+    margin-bottom: 15px; /* Space below this group */
+    display: flex;
+    align-items: center; /* Vertically align button and select */
+    gap: 15px; /* Space between button and select */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: flex-start; /* Align to the left */
+}
+
+/* Style for inline form group within the export group */
+.form-group-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label and select */
+    /* Removed flex-grow: 1; to make it content-hugging */
+    margin-bottom: 0; /* Remove default form-group margin */
+}
+
+.form-group-inline label {
+    margin-bottom: 0; /* Remove default label margin */
+    white-space: nowrap; /* Prevent label from wrapping */
+}
+
+/* NEW: Style for checkbox in inline group */
+.form-group-inline input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    transform: scale(1.2);
+}
+
+
+.form-group-inline select {
+    /* Removed flex-grow: 1; */
+    width: auto; /* Allow select to take remaining space based on content */
+    min-width: 180px; /* Increased min-width to ensure space for content and arrow */
+    max-width: 250px; /* Set a reasonable max-width to prevent it from getting too wide */
+    margin-bottom: 0; /* Remove default select margin */
+    font-size: 16px; /* Match button font size */
+    padding: 10px 15px; /* Adjust padding to match button visually */
+    padding-right: 2.5em; /* Add more padding on the right for the arrow */
+    /* NEW: Ensure font size applies to the select element itself */
+    -webkit-appearance: none; /* Remove default browser styling for consistency */
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white; /* Ensure background is white */
+    /* Changed SVG to a down arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C56.599L146.202%2C197.398L5.404%2C56.599h281.596z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+
+
+button {
+    padding: 10px 20px; /* Content hugging with padding */
+    background-color: #607d8b; /* Blue Grey theme for Settings */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    flex-grow: 0; /* Prevent buttons from growing */
+    min-width: unset; /* Remove min-width */
+    width: auto; /* Allow width to be determined by content and padding */
+}
+
+button:hover {
+    background-color: #455a64; /* Darker blue grey on hover */
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+button.danger {
+    background-color: #dc3545;
+}
+
+button.danger:hover {
+    background-color: #c82333;
+}
+
+.status-message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #455a64;
+    text-align: center;
+}
+
+/* Form group for select element (general, not inline) */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+/* Custom Modal Styles (consistent across apps) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; /* Show when 'show' class is added */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%; /* Could be responsive */
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal-message {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons .confirm-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-buttons .confirm-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal-buttons .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-buttons .cancel-btn:hover {
+    background-color: #5a6268;
+}

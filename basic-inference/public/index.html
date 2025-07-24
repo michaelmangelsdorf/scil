@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Inference</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+</head>
+<body>
+    <div class="app-header">
+        <h1><a href="/">Scene Inference Lab: Inference Module</a></h1>
+    </div>
+
+    <div class="container">
+        <div class="section" id="model-selection-section">
+            <button type="button" class="collapsible-header" id="model-selection-header">
+                <h2>LM Studio Model Selection</h2>
+                <span class="collapse-icon"></span>
+            </button>
+            <div class="collapsible-content">
+                <div class="model-picker-group" id="inference-model-picker-group">
+                    <label for="inference-model-select">Inference Model:</label>
+                    <div class="model-controls">
+                        <select id="inference-model-select">
+                            <option value="">Loading Models...</option>
+                        </select>
+                        <button id="refresh-models-btn">Refresh Models</button>
+                    </div>
+                    <p id="inference-model-status"></p>
+                    <p id="selected-inference-model-context-length" class="context-length-text"></p>
+                </div>
+                <p id="inference-model-preferred-display" class="preferred-model-display hidden"></p>
+
+                <div class="model-picker-group" id="embedding-model-picker-group">
+                    <label for="embedding-model-select">Embedding Model:</label>
+                    <div class="model-controls">
+                        <select id="embedding-model-select">
+                            <option value="">Loading Models...</option>
+                        </select>
+                        <button id="refresh-embedding-models-btn">Refresh</button>
+                    </div>
+                    <p id="embedding-model-status"></p>
+                    <p id="selected-embedding-model-context-length" class="context-length-text"></p>
+                </div>
+                <p id="embedding-model-preferred-display" class="preferred-model-display hidden"></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <button type="button" class="collapsible-header" id="scene-selection-header">
+                <h2>Scene Selection <span id="selected-scene-name-display"></span></h2>
+                <span class="collapse-icon"></span>
+            </button>
+            <div class="collapsible-content">
+                <div class="scene-selection-content-wrapper">
+                    <div class="listbox-container">
+                        <select id="scene-listbox" size="10"></select>
+                    </div>
+                    <div id="scene-canon-synopsis" class="scene-context-display">
+                        <p>Select a scene to view its canon and synopsis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="dialog-interaction-section">
+            <h2>Current Interaction</h2>
+            
+            <div class="interaction-top-controls">
+                <div class="dialog-main-controls">
+                    <div class="dialog-nav-group">
+                        <button id="dialog-prev-btn" class="nav-button" disabled>&lt;</button>
+                        <span id="dialog-sort-order-display" class="dialog-sort-order-display-text"></span>
+                        <button id="dialog-next-btn" class="nav-button" disabled>&gt;</button>
+                    </div>
+                    <button id="reload-current-dialog-btn" class="icon-button" title="Reload last dialog">&#x21BB;</button>
+                    <button id="save-dialog-btn">Save</button> <button id="insert-dialog-btn">Insert</button> <button id="delete-dialog-btn" class="delete-btn">Delete</button> </div>
+                <div class="dialog-tool-controls">
+                    <button id="keyboard-btn" class="icon-button info-button" title="Open keyboard">&#x2328;</button>
+                    <button id="vocab-btn" class="icon-button info-button" title="Create vocab entry from selected text">&#128214;</button>
+                    <button id="clear-text-fields-btn" class="icon-button warning-button" title="Clear text fields">&#129533;</button>
+                </div>
+            </div>
+
+            <div class="interaction-grid">
+                <div class="user-column">
+                    <div class="person-input-group-row">
+                        <label for="user-agent-field">Actor:</label>
+                        <select id="user-agent-field">
+                            <option value="">Loading Actors...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="user-query-textbox" rows="10" class="resizable-textarea" placeholder="Enter your query here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="agent-column">
+                    <div class="person-input-group-row">
+                        <label for="ai-persona-field">Responder:</label>
+                        <select id="ai-persona-field">
+                            <option value="">Loading Responders...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="ai-response-textbox" rows="10" class="resizable-textarea" placeholder="Agent response will appear here..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-action-buttons-group">
+                <div class="play-refine-group">
+                    <button id="auto-btn">Auto</button>
+                    <button id="play-btn">Play</button>
+                    <div class="refine-option">
+                        <input type="checkbox" id="refine-checkbox">
+                        <label for="refine-checkbox">Refine</label>
+                    </div>
+                </div>
+                <div class="think-plan-wonder-and-spinner-group">
+                    <span class="spinner" id="response-spinner" style="display: none;"></span> <div class="think-plan-wonder-group">
+                        <button id="think-btn">Think</button>
+                        <button id="plan-btn">Plan</button>
+                        <button id="wonder-btn">Wonder</button>
+                        <button id="evolve-btn">Evolve</button> </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section feedback-section">
+            <button type="button" class="collapsible-header" id="annotations-header">
+                <h2>Annotations</h2>
+                <span class="collapse-icon"></span>
+            </button>
+            <div class="collapsible-content">
+                <div class="form-group">
+                    <label for="revised-textarea">Revised Response:</label>
+                    <textarea id="revised-textarea" rows="5" class="resizable-textarea" placeholder="(optional) Edit the agent's response here for fine-tuning."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="comment-textbox">Comment:</label>
+                    <textarea id="comment-textbox" rows="3" class="resizable-textarea" placeholder="(optional) Add comments on the quality of the original response."></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="refine-option">
+                        <input type="checkbox" id="exemplary-checkbox">
+                        <label for="exemplary-checkbox">Exemplary Dialog</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="keyboard-modal" class="keyboard-overlay">
+        <div class="keyboard-container">
+            <div id="keyboard-suggestions" class="keyboard-suggestions-container"></div>
+            <textarea id="keyboard-modal-textarea"></textarea>
+            <div class="simple-keyboard"></div>
+            <div class="keyboard-modal-controls">
+                <button id="keyboard-cancel-btn">Cancel</button>
+                <button id="keyboard-done-btn">Done</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-keyboard-layouts@latest/build/index.js"></script>
+
+    <script type="module" src="dom-elements.js"></script>
+    <script type="module" src="api-service.js"></script>
+    <script type="module" src="app-init-load.js"></script>
+    <script type="module" src="app-interaction.js"></script>
+    <script type="module" src="korean-keyboard.js"></script>
+</body>
+</html>

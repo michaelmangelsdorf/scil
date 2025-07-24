@@ -1,0 +1,406 @@
+/* vector-expert/public/style.css */
+
+/* Base styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px; /* Keep overall page margin */
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Styles for the central app header (consistent across sub-apps) */
+.app-header {
+    background-color: #007bff; /* Match primary button color */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin: 0 auto 20px auto; /* Center horizontally, 20px bottom margin */
+    max-width: 900px; /* Match container's max-width */
+    border-radius: 8px; /* Match container's border-radius */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Match container's shadow */
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.app-header h1 a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.app-header h1 a:hover {
+    color: #e9ecef; /* Lighter white on hover */
+}
+
+/* Main container for the app content */
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* Center horizontally */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings within sections */
+h1, h2 {
+    color: #0056b3;
+    /* Removed border-bottom and padding-bottom from h2 as it's now part of collapsible-header */
+    margin-top: 0;
+    margin-bottom: 0; /* Adjusted for collapsible header */
+}
+
+/* Styling for individual sections */
+.section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+/* Add margin-bottom to h2 directly within .section (not .collapsible-header) */
+.section > h2 {
+    margin-bottom: 20px; /* Spacing below the title */
+    border-bottom: 1px solid #eee; /* Restore a subtle border */
+    padding-bottom: 10px; /* Add some padding below the border */
+}
+
+
+/* Form group styling for labels and inputs */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%; /* Changed from calc(...) to 100% for consistency */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+textarea.resizable-textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 50px; /* Minimum height */
+}
+
+select[size] {
+    height: auto; /* Adjust height based on content */
+    min-height: 150px; /* Minimum height for listbox */
+}
+
+/* Button group styling */
+.button-group {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Specific styles for info displays (e.g., descriptions, context length) */
+.info-display {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    border-left: 2px solid #ccc;
+}
+
+.context-length-text {
+    font-size: 0.9em;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.fit-status-text {
+    font-size: 1em;
+    margin-top: 5px;
+    font-weight: bold;
+}
+.fit-status-ok {
+    color: green;
+}
+.fit-status-overflow {
+    color: red;
+}
+
+.scene-context-display {
+    background-color: #e9f5ff; /* Light blue background */
+    border: 1px solid #b3d7ff; /* Blue border */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #333;
+    text-align: left;
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+/* Row display for labels and select/input combinations */
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.row label {
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.row select {
+    flex-grow: 1;
+}
+
+/* New style for spacing div */
+.spacing-div {
+    margin-bottom: 20px; /* Adjust as needed for desired space */
+}
+
+/* New style for model controls to add spacing */
+.model-controls {
+    display: flex;
+    gap: 10px; /* Space between select and button */
+    align-items: center;
+    margin-bottom: 15px; /* Space below the controls */
+}
+
+.model-controls select {
+    flex-grow: 1; /* Allow select to take available space */
+    max-width: 300px; /* Limit its max width */
+}
+
+.model-controls button {
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+/* Custom Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; /* Show when 'show' class is added */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%; /* Could be responsive */
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal-message {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons .confirm-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-buttons .confirm-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal-buttons .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-buttons .cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+/* NEW: Collapsible Section Styles (from basic-inference) */
+.collapsible-header {
+    background-color: #e9ecef; /* Light grey background for header */
+    color: #333;
+    cursor: pointer;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2em; /* Slightly larger font for header */
+    transition: background-color 0.3s ease;
+    display: flex; /* Use flexbox for alignment of text and icon */
+    justify-content: space-between; /* Push icon to the right */
+    align-items: center;
+    border-radius: 5px 5px 0 0; /* Rounded top corners */
+    margin-bottom: 0; /* Remove default button margin */
+}
+
+.collapsible-header:hover {
+    background-color: #d0d7de;
+}
+
+/* Style for the h2 inside the button */
+.collapsible-header h2 {
+    margin: 0; /* Remove margin from h2 inside button */
+    padding: 0; /* Remove padding from h2 inside button */
+    border-bottom: none; /* Ensure no border from h2 */
+    color: #0056b3; /* Keep the original h2 color */
+}
+
+.collapsible-header .collapse-icon {
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-header.active .collapse-icon::before {
+    content: '\2212'; /* Minus sign for expanded state */
+}
+
+.collapsible-header:not(.active) .collapse-icon::before {
+    content: '\002B'; /* Plus sign for collapsed state */
+}
+
+.collapsible-content {
+    padding: 15px;
+    max-height: 0; /* Start collapsed */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background-color: #fafafa; /* Match section background */
+    border: 1px solid #ddd;
+    border-top: none; /* No top border, as header has one */
+    border-radius: 0 0 5px 5px; /* Rounded bottom corners */
+}
+
+.collapsible-content.active {
+    max-height: 1000px; /* Arbitrarily large value to ensure content fits */
+    padding: 15px; /* Restore padding when active */
+}
+
+/* Adjust margin for first element inside collapsible content */
+.collapsible-content > *:first-child {
+    margin-top: 0;
+}
+
+/* NEW: Styles for model picker groups */
+.model-picker-group {
+    margin-bottom: 20px; /* Space between the two model picker sections */
+    padding-bottom: 15px; /* Internal padding */
+    border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.model-picker-group:last-of-type {
+    border-bottom: none; /* No separator for the last one */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* NEW: Preferred model display */
+.preferred-model-display {
+    font-weight: bold;
+    color: #28a745; /* Green color for success/preferred status */
+    text-align: center;
+    padding: 10px;
+    background-color: #e6ffe6; /* Light green background */
+    border: 1px solid #a3e6a3;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 10px;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .model-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .model-controls select,
+    .model-controls button {
+        max-width: unset;
+        width: 100%;
+    }
+}

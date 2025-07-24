@@ -1,0 +1,6 @@
+/models
+/to_gemini
+*.db
+*.sublime-workspace
+*.sublime-project
+/node_modules

@@ -1,0 +1,454 @@
+body {
+    font-family: Arial, sans-serif; /* Changed to Arial for consistency */
+    margin: 20px 0; /* Consistent top/bottom margin, no horizontal margin */
+    padding: 0; /* Removed padding to let container manage it */
+    background-color: #f4f4f4; /* Consistent background */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* NEW: Styles for the central app header (adapted for scene-edit's width) */
+.app-header {
+    background-color: #546e7a; /* Subtly individual blue-grey color */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin: 0 auto 20px auto; /* Center horizontally, 20px bottom margin */
+    max-width: 1200px; /* Set max-width to match the container */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    border-radius: 8px; /* Re-add border-radius for consistency with container */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Consistent box-shadow */
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2em; /* Consistent font size */
+    border-bottom: none; /* REMOVED: Underline from header h1 */
+    padding-bottom: 0; /* Adjust padding if needed after removing border */
+}
+
+.app-header h1 a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.app-header h1 a:hover {
+    color: #e9ecef; /* Lighter white on hover */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px; /* Consistent padding */
+    border-radius: 8px; /* Consistent border-radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Consistent box-shadow */
+    max-width: 1200px; /* Retain scene-edit's wider max-width */
+    width: 100%;
+    /* Changed from grid to flex column to stack sections vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+    gap: 20px; /* Space between main sections */
+    margin-top: 0; /* Margin now handled by app-header's margin-bottom */
+}
+
+/* REMOVED .top-section as its content is now directly in .main-scene-area */
+/* .top-section {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+} */
+
+/* NEW: Main layout for scenes and details */
+.main-scene-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Left column for lists, right for details */
+    gap: 20px;
+    width: 100%; /* Take full width of container */
+    /* Add section-like styling to this main area */
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px; /* Apply padding to the whole area */
+}
+
+/* NEW: Group for the left column (Scenes List + Redux Agent) */
+.left-column-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between scene list and scene closure group */
+}
+
+
+.scene-list-container, .dialog-list-container {
+    background-color: #fafafa; /* Lighter background for consistency */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Consistent border-radius */
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 400px;
+    box-sizing: border-box; /* Ensure padding/border included in width/height */
+}
+
+.scene-list-container h2, .dialog-list-container h2 {
+    color: #0056b3; /* Consistent color */
+    margin-top: 0;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee; /* Lighter border */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#scene-list, #dialog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#scene-list li, #dialog-list li {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 8px; /* Space between checkbox, name, and tokens */
+}
+
+#scene-list li:last-child, #dialog-list li:last-child {
+    border-bottom: none;
+}
+
+#scene-list li:hover, #dialog-list li:hover {
+    background-color: #e9f0f8;
+    transform: translateX(3px);
+}
+
+#scene-list li.selected, #dialog-list li.selected {
+    background-color: #d0e7ff;
+    border-left: 5px solid #007bff;
+    padding-left: 7px;
+    font-weight: bold;
+}
+
+#scene-list li.dragging, #dialog-list li.dragging {
+    opacity: 0.5;
+    border: 2px dashed #007bff;
+}
+
+/* New style for greyed-out scenes */
+#scene-list li.greyed-out {
+    color: #aaa;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+#scene-list li .scene-include-checkbox {
+    margin-right: 5px; /* Space between checkbox and name */
+    transform: scale(1.2); /* Slightly larger checkbox */
+}
+
+#scene-list li .scene-name-text {
+    flex-grow: 1; /* Allows name to take available space */
+}
+
+#scene-list li .scene-token-counts {
+    font-size: 0.85em;
+    color: #666;
+    margin-left: auto; /* Push to the right */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+
+.scene-details, .dialog-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* scene-details no longer needs explicit padding/border as main-scene-area has it */
+}
+
+.scene-details h2, .dialog-details h3 {
+    color: #0056b3;
+    margin-top: 0;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px; /* Adjusted for consistency */
+    display: block; /* Ensure label takes full width */
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%; /* Consistent width */
+    padding: 10px;
+    margin-bottom: 15px; /* Consistent margin */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Consistent border-radius */
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+    margin-top: 5px; /* Consistent margin */
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px; /* Consistent margin */
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Align buttons to the right for consistency */
+}
+
+button {
+    background-color: #007bff; /* Consistent color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px; /* Consistent border-radius */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-grow: 0; /* Prevent buttons from growing too much */
+    min-width: unset; /* Remove min-width to allow flex-grow to work if needed */
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.delete-btn {
+    background-color: #dc3545;
+}
+
+button.delete-btn:hover {
+    background-color: #c82333;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* NEW: Styles for the dialog section's main layout */
+.dialog-section {
+    width: 100%; /* Take full width of container */
+    background-color: #fafafa; /* Add section-like styling */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px; /* Space from main-scene-area */
+    
+    display: grid; /* Use grid for dialogs+closure on left, details on right */
+    grid-template-columns: 1fr 2fr; /* Dialog list + closure on left, details on right */
+    gap: 20px;
+}
+
+/* NEW: Wrapper for Dialogs List and Scene Closure Group on the left */
+.dialog-left-column-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between dialog list and scene closure group */
+}
+
+/* Redefined styles for Scene Closure Group */
+.scene-closure-group {
+    background-color: #fafafa; /* Consistent background */
+    border: 1px solid #ddd; /* Consistent border */
+    border-radius: 5px; /* Consistent border-radius */
+    padding: 15px; /* Consistent padding */
+    
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; /* Align contents to the left */
+    gap: 15px; /* Space between elements */
+    /* No margin-top here as gap in dialog-left-column-group handles it */
+    width: 100%; /* Ensure it takes full width of its parent column */
+    box-sizing: border-box; /* Ensure padding/border included in width */
+}
+
+/* The h3 heading is removed from HTML, so this rule is for consistency if re-added */
+.scene-closure-group h3 {
+    color: #0056b3;
+    margin-top: 0;
+    font-size: 1.3em; /* Matches other h3 headings */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 0; /* Control spacing with gap */
+    width: 100%; /* Ensure heading takes full width for border */
+    text-align: left; /* Ensure heading text is left-aligned */
+}
+
+.scene-closure-group .form-group-closure {
+    margin-bottom: 0; /* Remove default margin to control spacing with gap */
+    display: flex; /* Use flexbox for label and select */
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Allow it to take full width of its parent flex container */
+    justify-content: flex-start; /* Align contents to the left */
+}
+
+.scene-closure-group .form-group-closure select {
+    width: auto; /* Allow select to size based on content */
+    max-width: 250px; /* Limit max width of the select dropdown */
+    min-width: 150px; /* Ensure a minimum width */
+    margin-bottom: 0; /* Remove default margin */
+}
+
+.scene-closure-group .form-group-closure label {
+    white-space: nowrap; /* Prevent label from wrapping */
+}
+
+
+/* New inline form group for checkbox */
+.form-group-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px; /* Adjusted for consistency */
+}
+
+.form-group-inline label {
+    margin-bottom: 0; /* Override default label margin */
+}
+
+.form-group-inline input[type="checkbox"] {
+    width: auto; /* Don't stretch checkbox */
+    margin-bottom: 0; /* Align with label */
+    transform: scale(1.2); /* Make checkbox slightly larger */
+}
+
+
+.status-message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+    text-align: left; /* Ensure status message is left-aligned */
+}
+
+.bottom-section {
+    grid-column: 1 / 3; /* Spans across both columns */
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    width: 100%; /* Take full width of container */
+}
+
+/* Custom Modal Styles (consistent with basic-inference) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; /* Show when 'show' class is added */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%; /* Could be responsive */
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal-message {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons .confirm-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-buttons .confirm-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal-buttons .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-buttons .cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .container, .top-section, .dialog-section {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+
+    .scene-details, .dialog-details {
+        padding-top: 20px; /* Add space when stacked */
+    }
+
+    /* Adjust padding for stacked sections if container padding becomes tight */
+    .container, .top-section, .dialog-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%; /* Full width buttons on very small screens */
+        min-width: unset;
+    }
+}

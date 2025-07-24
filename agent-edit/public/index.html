@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-header">
+        <h1><a href="/">Scene Inference Lab: Agent Editor</a></h1>
+    </div>
+
+    <div class="container">
+        <div class="top-panels-grid">
+            <div class="agent-list-panel">
+                <h2>Agents</h2>
+                <div class="filter-group">
+                    <label for="typeFilter">Filter by Type:</label>
+                    <select id="typeFilter">
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <button id="newAgentBtn" class="primary">New Agent</button>
+                <ul id="agentList">
+                </ul>
+            </div>
+
+            <div class="agent-details-panel">
+                <h2 id="detailsHeader">Agent Details</h2>
+                <form id="agentForm">
+                    <input type="hidden" id="agentId">
+
+                    <label for="agentName">Name:</label>
+                    <input type="text" id="agentName" required>
+
+                    <label for="agentType">Type:</label>
+                    <input type="text" id="agentType">
+
+                    <label for="agentDesc">Description:</label>
+                    <textarea id="agentDesc"></textarea>
+                </form>
+                <div id="noAgentSelected" class="no-agent-selected">
+                    Select an agent from the list or create a new one.
+                </div>
+            </div>
+        </div>
+
+        <div class="global-action-buttons-group">
+            <button type="button" id="deleteAgentBtn" class="danger">Delete Selected Agent</button>
+            <button type="button" id="saveAgentBtn" class="primary">Save Agent Details</button>
+            <button type="button" id="clearAgentsBtn" class="danger">Clear All Agents</button>
+        </div>
+
+        <div class="section prompting-section">
+            <h2>Prompting</h2>
+            
+            <div class="accordion-wrapper">
+                <div class="accordion">
+                    <button type="button" class="accordion-header">Canon</button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="agentCanon">Canon:</label>
+                            <p id="agentCanonDescription" class="field-description"></p>
+                            <textarea id="agentCanon"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <button type="button" class="accordion-header">Chat Prompts</button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="agentPlayPrompt">Play Prompt:</label>
+                            <p id="agentPlayPromptDescription" class="field-description"></p>
+                            <textarea id="agentPlayPrompt"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="agentForwardPrompt">Forward Prompt:</label>
+                            <p id="agentForwardPromptDescription" class="field-description"></p>
+                            <textarea id="agentForwardPrompt"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="agentCheckerPrompt">Checker Prompt:</label>
+                            <p id="agentCheckerPromptDescription" class="field-description"></p>
+                            <textarea id="agentCheckerPrompt"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <button type="button" class="accordion-header">State & Awareness</button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="agentState">State:</label>
+                            <p id="agentStateDescription" class="field-description"></p>
+                            <textarea id="agentState"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="agentAwarenessPrompt">Awareness Prompt:</label>
+                            <p id="agentAwarenessPromptDescription" class="field-description"></p>
+                            <textarea id="agentAwarenessPrompt"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion">
+                    <button type="button" class="accordion-header">Goals & Planning</button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label for="agentGoals">Goals:</label>
+                            <p id="agentGoalsDescription" class="field-description"></p>
+                            <textarea id="agentGoals"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="agentPlannerPrompt">Planner Prompt:</label>
+                            <p id="agentPlannerPromptDescription" class="field-description"></p>
+                            <textarea id="agentPlannerPrompt"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

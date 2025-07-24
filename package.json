@@ -1,0 +1,22 @@
+{
+  "name": "scil-central-server",
+  "version": "1.0.0",
+  "description": "Central server for multiple Node.js applications.",
+  "main": "central-server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node central-server.js"
+  },
+  "dependencies": {
+    "@dqbd/tiktoken": "^1.0.21",
+    "@lmstudio/sdk": "^1.3.0",
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "node-llama-cpp": "^3.10.0",
+    "openai": "^5.9.0",
+    "sqlite-vec": "^0.1.7-alpha.2",
+    "sqlite3": "^5.1.7"
+  }
+}

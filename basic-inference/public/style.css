@@ -1,0 +1,651 @@
+/* basic-inference/public/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px; /* Keep overall page margin */
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Basic styling for the agent description */
+.agent-description-text {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    border-left: 2px solid #ccc;
+}
+/* Basic styling for the context length display */
+.context-length-text {
+    font-size: 0.9em;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+/* Style for fit/overflow message */
+.fit-status-text {
+    font-size: 1em;
+    margin-top: 5px;
+    font-weight: bold;
+}
+.fit-status-ok {
+    color: green;
+}
+.fit-status-overflow {
+    color: red;
+}
+/* Style for scene context */
+.scene-context-display {
+    background-color: #e9f5ff; /* Light blue background */
+    border: 1px solid #b3d7ff; /* Blue border */
+    border-radius: 5px;
+    padding: 8px; /* Reduced from 10px */
+    margin-bottom: 0; /* Changed from 20px, as flex handles vertical spacing now */
+    font-size: 0.95em;
+    color: #333;
+    text-align: left;
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+/* Add or update rules for elements inside scene-context-display */
+.scene-context-display h3 {
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 5px; /* Reduced bottom margin from default */
+}
+
+.scene-context-display p {
+    margin-top: 5px; /* Reduced top margin from default */
+    margin-bottom: 5px; /* Reduced bottom margin from default */
+}
+
+
+/* NEW: Styles for the central app header */
+.app-header {
+    background-color: #007bff; /* Match primary button color */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin: 0 auto 20px auto; /* Center horizontally, 20px bottom margin */
+    max-width: 900px; /* Match container's max-width */
+    border-radius: 8px; /* Match container's border-radius */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Match container's shadow */
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2em;
+    border-bottom: none; /* REMOVED: Underline from header h1 */
+    padding-bottom: 0; /* Adjust padding if needed after removing border */
+}
+
+.app-header h1 a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.app-header h1 a:hover {
+    color: #e9ecef; /* Lighter white on hover */
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* Center horizontally */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 0; /* Adjusted for collapsible header */
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.section > h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+textarea.resizable-textarea {
+    resize: vertical;
+    min-height: 50px;
+}
+
+select[size] {
+    height: auto;
+    min-height: 150px;
+}
+
+.dialog-nav-group {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.dialog-nav-group .nav-button {
+    padding: 8px 12px;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.dialog-sort-order-display-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    padding: 0 5px;
+    min-width: 40px;
+    text-align: center;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+button.icon-button {
+    background: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 6px 10px;
+    font-size: 1.2em;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button.icon-button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+button.icon-button.warning-button {
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+button.icon-button.warning-button:hover {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+button.icon-button.info-button {
+    color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+button.icon-button.info-button:hover {
+    background-color: #17a2b8;
+    color: white;
+}
+
+p[id$="-model-status"] {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.row label {
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.row select {
+    flex-grow: 1;
+}
+
+textarea.status-text {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 123, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #007bff;
+    animation: spin 1s ease-in-out infinite;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.refine-option {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.refine-option input[type="checkbox"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.refine-option label {
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.person-input-group-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.person-input-group-row label {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.person-input-group-row input {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.person-input-group-row select {
+    flex-grow: 1;
+    margin: 0;
+}
+
+
+.model-picker-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.model-picker-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.preferred-model-display {
+    font-weight: bold;
+    color: #28a745;
+    text-align: center;
+    padding: 10px;
+    background-color: #e6ffe6;
+    border: 1px solid #a3e6a3;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Collapsible Section Styles */
+.collapsible-header {
+    background-color: #e9ecef;
+    color: #333;
+    cursor: pointer;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0;
+}
+
+.collapsible-header:hover {
+    background-color: #d0d7de;
+}
+
+.collapsible-header h2 {
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+    color: #0056b3;
+}
+
+.collapsible-header .collapse-icon {
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-header.active .collapse-icon::before {
+    content: '\2212';
+}
+
+.collapsible-header:not(.active) .collapse-icon::before {
+    content: '\002B';
+}
+
+
+/* --- FIX FOR COLLAPSIBLE CONTENT --- */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background-color: #fafafa;
+    border-radius: 0 0 5px 5px;
+    /* Padding and border are removed from the base state */
+}
+
+.collapsible-content.active {
+    /* Padding and border are applied ONLY when active (expanded) */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    /* The JS will set a more accurate max-height, but this is a good fallback */
+    max-height: 1000px; 
+}
+
+.collapsible-content > *:first-child {
+    margin-top: 0;
+}
+
+.feedback-section .collapsible-content {
+    padding-top: 15px;
+}
+
+.feedback-section .button-group {
+    margin-top: 20px;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.interaction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.user-column,
+.agent-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-column .person-input-group-row,
+.agent-column .person-input-group-row,
+.user-column .form-group,
+.agent-column .form-group {
+    margin-bottom: 15px;
+}
+
+.user-column .form-group:last-child,
+.agent-column .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.user-column textarea,
+.agent-column textarea {
+    flex-grow: 1;
+}
+
+.interaction-top-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.dialog-main-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dialog-tool-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.main-action-buttons-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.play-refine-group,
+.think-plan-wonder-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.think-plan-wonder-and-spinner-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+    .interaction-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-action-buttons-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .play-refine-group,
+    .think-plan-wonder-group,
+    .think-plan-wonder-and-spinner-group {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.scene-selection-content-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.scene-selection-content-wrapper .listbox-container {
+    flex: 1;
+    min-width: 250px;
+}
+
+.scene-selection-content-wrapper #scene-listbox {
+    width: 100%;
+    min-height: 150px;
+}
+
+.scene-selection-content-wrapper .scene-context-display {
+    flex: 2;
+    min-width: 300px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .scene-selection-content-wrapper {
+        flex-direction: column;
+    }
+
+    .scene-selection-content-wrapper .listbox-container,
+    .scene-selection-content-wrapper .scene-context-display {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
+/* New simple-keyboard Modal Styles */
+.keyboard-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.keyboard-overlay.active {
+    display: flex; /* Show when active */
+}
+
+.keyboard-container {
+    background-color: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.keyboard-suggestions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.keyboard-suggestion-btn {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.keyboard-suggestion-btn:hover {
+    background-color: #d0d7de;
+}
+
+
+#keyboard-modal-textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 1.1em;
+}
+
+.keyboard-modal-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#keyboard-cancel-btn {
+    background-color: #6c757d;
+}
+#keyboard-cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+#keyboard-done-btn {
+    background-color: #28a745;
+}
+#keyboard-done-btn:hover {
+    background-color: #218838;
+}
+
+
+/* Ensure textareas are resizable vertically and have a min-height */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}

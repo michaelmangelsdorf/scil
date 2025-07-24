@@ -1,0 +1,143 @@
+/* to_gemini/public/help.css */
+
+/* Help icon in app headers */
+.help-app-icon {
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: auto; /* Push to the right */
+    color: white; /* White color for icon in header */
+    font-size: 1.2em; /* Slightly larger than in agent-edit */
+    border: 1px solid white; /* White border in header */
+    border-radius: 50%;
+    width: 28px; /* Larger click area */
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    line-height: 1; /* Ensure vertical centering of '?' */
+    padding-bottom: 2px; /* Small nudge for visual alignment */
+}
+
+.help-app-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white on hover */
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Modal Backdrop */
+.app-help-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top, above other elements */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.6); /* Black with more opacity */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Padding around the modal content */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+/* Modal Content */
+.app-help-modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Auto margin for older browsers and centering */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative; /* For close button positioning */
+    max-width: 80%; /* Almost as large as inner app page */
+    max-height: 90vh; /* Max height for scrollability */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Subtle border */
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Scrollbar styling for modal content */
+.app-help-modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.app-help-modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.app-help-modal-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.app-help-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/* Close Button */
+.app-help-close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.app-help-close-button:hover,
+.app-help-close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Modal Content Styling (for h2, p, ul, li inside help.html) */
+.app-help-modal-content h2 {
+    color: #0056b3; /* Consistent blue for headings */
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.app-help-modal-content h3 {
+    color: #007bff;
+    font-size: 1.4em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.app-help-modal-content p {
+    margin-bottom: 10px;
+}
+
+.app-help-modal-content ul {
+    list-style: disc inside;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.app-help-modal-content ul li {
+    margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .app-help-modal-content {
+        max-width: 95%;
+        padding: 20px;
+    }
+    .app-help-close-button {
+        top: 5px;
+        right: 10px;
+        font-size: 24px;
+    }
+}

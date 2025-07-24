@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-header">
+        <h1><a href="/">Scene Inference Lab: Scene Editor</a></h1>
+    </div>
+
+    <div class="container">
+        <div class="main-scene-area">
+            <div class="left-column-group">
+                <div class="scene-list-container">
+                    <h2>Scenes</h2>
+                    <ul id="scene-list"></ul>
+                </div>
+            </div>
+            <div class="scene-details">
+                <h2>Scene Details</h2>
+                <label for="scene-name">Name:</label>
+                <input type="text" id="scene-name">
+                <label for="scene-after">After:</label>
+                <input type="text" id="scene-after" value="1H">
+                <div class="form-group-inline">
+                    <label for="scene-include">Include in Inference:</label>
+                    <input type="checkbox" id="scene-include" checked>
+                </div>
+                <div class="button-group">
+                    <button id="save-scene-btn">Save Scene</button>
+                    <button id="delete-scene-btn" class="delete-btn">Delete Scene</button>
+                    <button id="new-scene-btn">New Scene</button>
+                </div>
+                <label for="scene-synopsis">Synopsis:</label>
+                <textarea id="scene-synopsis" rows="10"></textarea>
+                <label for="scene-canon">Canon:</label>
+                <textarea id="scene-canon" rows="10"></textarea>
+            </div>
+        </div>
+
+        <div class="dialog-section">
+            <div class="dialog-left-column-group">
+                <div class="dialog-list-container">
+                    <h2>Dialogs</h2>
+                    <ul id="dialog-list"></ul>
+                </div>
+                <div class="scene-closure-group">
+                    <div class="form-group-closure">
+                        <select id="summarizer-select"> <!-- Changed ID from redux-agent-select to summarizer-select -->
+                            <option value="">Select Summarizer</option> <!-- Changed text from Select Summariser to Select Summarizer -->
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button id="apply-scene-closure-btn">Summarize this scene</button>
+                    </div>
+                    <p id="closure-status-message" class="status-message"></p>
+                </div>
+            </div>
+            <div class="dialog-details">
+                <h3>Dialog Details</h3>
+                <label for="dialog-ai-persona">AI Persona:</label>
+                <input type="text" id="dialog-ai-persona">
+                <label for="dialog-user-persona">User Persona:</label>
+                <input type="text" id="dialog-user-persona">
+                <div class="button-group">
+                    <button id="save-dialog-btn">Save Dialog</button>
+                    <button id="delete-dialog-btn" class="delete-btn">Delete Dialog</button>
+                    <button id="new-dialog-btn">New Dialog</button>
+                </div>
+                <label for="dialog-user-query">User Query:</label>
+                <textarea id="dialog-user-query" rows="5"></textarea>
+                <label for="dialog-ai-response">AI Response:</label>
+                <textarea id="dialog-ai-response" rows="5"></textarea>
+                <label for="dialog-comment">Comment:</label>
+                <textarea id="dialog-comment" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <button id="clear-db-btn" class="delete-btn">Clear Database Scenes</button>
+        </div>
+    </div>
+
+    <div id="custom-modal" class="modal">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <div class="modal-buttons">
+                <button id="modal-confirm-btn" class="confirm-btn">Confirm</button>
+                <button id="modal-cancel-btn" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

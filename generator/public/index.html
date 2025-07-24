@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-header">
+        <h1><a href="/">Scene Inference Lab: Generator</a></h1>
+    </div>
+
+    <div class="container">
+        <div class="section" id="model-section">
+            <button type="button" class="collapsible-header" id="model-config-header">
+                <h2>Model Configuration</h2>
+                <span class="collapse-icon"></span>
+            </button>
+            <div class="collapsible-content" id="model-config-content">
+                <p id="model-status-text">Loading available models...</p>
+                <div id="model-picker-group" style="display: none;">
+                    <label for="model-select">Select Model for Generation:</label>
+                    <select id="model-select"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="world-data-section">
+            <button type="button" class="collapsible-header" id="world-data-header">
+                <h2>World Data</h2>
+                <span class="collapse-icon"></span>
+            </button>
+            <div class="collapsible-content" id="world-data-content">
+                <div class="form-group">
+                    <label for="story-name">Story Name:</label>
+                    <input type="text" id="story-name" placeholder="The Name of Your World or Story...">
+                </div>
+                <div class="form-group">
+                    <label for="story-outline">Story Outline:</label>
+                    <textarea id="story-outline" rows="8" placeholder="Describe the overall setting, key factions, and the main plot of your story..."></textarea>
+                </div>
+                <div class="button-group">
+                    <button id="save-world-btn">Save World Data</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Characters</h2>
+            <div class="characters-container">
+                <div class="character-list-panel">
+                    <div class="character-list-header">
+                        <h3>Existing Characters</h3>
+                        <button id="new-char-btn">New</button>
+                    </div>
+                    <ul id="character-list"></ul>
+                </div>
+                <div class="character-creation-panel">
+                    <h3>Character Details</h3>
+                    
+                    <div id="generation-progress" class="progress-container" style="display: none;">
+                        <h4>Generation Progress:</h4>
+                            <ul id="progress-list">
+                                <li id="progress-name"><span></span>Name</li>
+                                <li id="progress-canon"><span></span>Description</li>
+                                <li id="progress-state"><span></span>Initial State</li>
+                                <li id="progress-goals"><span></span>Initial Goals</li>
+                                <li id="progress-play_prompt"><span></span>Play Prompt</li>
+                                <li id="progress-awareness_prompt"><span></span>Awareness Prompt</li>
+                                <li id="progress-checker_prompt"><span></span>Checker Prompt</li>
+                                <li id="progress-planner_prompt"><span></span>Planner Prompt</li>
+                            </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="character-name">Character Name:</label>
+                        <input type="text" id="character-name" placeholder="The character's name...">
+                    </div>
+                    <div class="form-group">
+                        <label for="character-description">Character Description:</label>
+                        <textarea id="character-description" rows="8" placeholder="Describe a new character. This will be saved as their 'canon'."></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button id="create-char-btn" disabled>Create from Description</button>
+                        <button id="invent-char-btn" title="Invent a random character based on the Story Outline">🎲 Invent Character</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p id="status-message"></p>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>

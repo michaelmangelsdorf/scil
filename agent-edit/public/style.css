@@ -1,0 +1,360 @@
+/* Do not delete this comment - agent-edit/public/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Changed to 0 to allow header to span full width */
+    padding: 0; /* Changed to 0 */
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+}
+
+/* --- App Header Styles (Copied from basic-inference) --- */
+.app-header {
+    background-color: #007bff; /* Match primary button color */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin: 0 auto 20px auto; /* Center horizontally, 20px bottom margin */
+    max-width: 900px; /* Match container's max-width from basic-inference */
+    border-radius: 8px; /* Match container's border-radius */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Match container's shadow */
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Adjusted slightly for prominence */
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.app-header h1 a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.app-header h1 a:hover {
+    color: #e9ecef; /* Lighter white on hover */
+}
+
+/* --- General Container and Panel Styles --- */
+.container {
+    display: flex;
+    flex-direction: column; /* NEW: Stack children vertically */
+    gap: 20px; /* Space between sections */
+    max-width: 900px; /* Adjusted to match basic-inference's container width */
+    margin: 0 auto; /* Center horizontally */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Previous margin-top was 20px auto; now handled by app-header's margin-bottom */
+}
+
+/* NEW: Grid for the top panels (Agent List and Agent Details) */
+.top-panels-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Left column for list, right for details */
+    gap: 20px;
+    width: 100%; /* Take full width of container */
+}
+
+.agent-list-panel, .agent-details-panel {
+    flex: 1; /* This is now handled by grid-template-columns */
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+.agent-list-panel {
+    min-width: 300px;
+}
+.agent-details-panel {
+    min-width: 400px;
+}
+h1, h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input[type="text"],
+textarea,
+select {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* NEW: Style for the global action buttons group */
+.global-action-buttons-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 0; /* Already accounted for by container gap */
+    justify-content: flex-end; /* Align buttons to the right */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    width: 100%; /* Span full width */
+    padding-top: 20px; /* NEW: Add top padding here for the scroll anchor */
+}
+
+/* Existing button styles (apply to global group buttons) */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+button.primary {
+    background-color: #007bff;
+    color: white;
+}
+button.primary:hover {
+    background-color: #0056b3;
+}
+button.danger {
+    background-color: #dc3545;
+    color: white;
+}
+button.danger:hover {
+    background-color: #c82333;
+}
+button.secondary {
+    background-color: #6c757d;
+    color: white;
+}
+button.secondary:hover {
+    background-color: #5a6268;
+}
+#agentList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    max-height: 500px; /* Limit height for scrollbar */
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+#agentList li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#agentList li:last-child {
+    border-bottom: none;
+}
+#agentList li:hover {
+    background-color: #e9ecef;
+}
+#agentList li.selected {
+    background-color: #d1ecf1;
+    font-weight: bold;
+}
+#typeFilter {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    width: calc(100% - 18px);
+}
+.filter-group {
+    display: flex;
+    align-items: baseline; /* Changed to baseline for alignment */
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.filter-group label {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+.no-agent-selected {
+    text-align: center;
+    color: #777;
+    padding: 30px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+/* NEW: Prompting Section specific styles */
+.prompting-section {
+    width: 100%; /* Take full width of the container */
+    /* It inherits .section styling for border, background, padding, margin-bottom */
+}
+
+/* --- Accordion Styles (updated for multiple usage) --- */
+.accordion-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between individual accordions */
+}
+
+.accordion {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    /* margin-bottom handled by accordion-wrapper gap */
+    overflow: hidden; /* Ensures rounded corners apply to children */
+}
+
+.accordion-header {
+    background-color: #f8f9fa;
+    color: #333;
+    cursor: pointer;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Include padding in width */
+    border-bottom: 1px solid #e0e0e0; /* Add border for separation */
+}
+
+.accordion-header:hover {
+    background-color: #e9ecef;
+}
+
+.accordion-header::after {
+    content: '\002B'; /* Plus sign icon */
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.accordion-header.active::after {
+    content: "\2212"; /* Minus sign icon */
+}
+
+.accordion-content {
+    padding: 0 15px;
+    background-color: white;
+    max-height: 0; /* Start hidden */
+    overflow: hidden;
+    overflow-y: auto; /* Allow vertical scrolling within the content if it overflows */
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Smooth transition */
+}
+
+/* When the accordion is active, expand its content */
+.accordion-header.active + .accordion-content {
+    max-height: 2000px; /* Needs to be larger than content to show fully */
+    padding: 15px; /* Restore padding when open */
+    border-top: none; /* No top border as header has one and gap separates */
+}
+
+/* Adjust margins for elements inside accordion to prevent double margins */
+.accordion-content label,
+.accordion-content input,
+.accordion-content textarea {
+    margin-bottom: 10px; /* Slightly reduce margin inside accordion */
+}
+.accordion-content .form-group:last-child {
+    margin-bottom: 0; /* Remove bottom margin for last form-group */
+}
+
+.accordion-content textarea {
+    min-height: 60px; /* Slightly reduce min-height for prompts inside accordion */
+}
+
+/* Styles for the help icon and description within existing form-group */
+.form-group {
+    /* Keep existing form-group styles */
+    margin-bottom: 15px; /* Adjust as needed, was already there */
+}
+
+.help-and-label-container {
+    display: flex;
+    align-items: center; /* Align icon and label vertically */
+    margin-bottom: 5px; /* Space between label/icon and description */
+}
+
+.help-icon {
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 8px; /* Space between icon and label */
+    color: #007bff; /* Blue color for the icon */
+    font-size: 1em;
+    border: 1px solid #007bff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.help-icon:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.field-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 0; /* No top margin, controlled by help-and-label-container margin-bottom */
+    margin-bottom: 5px; /* Space between description and textarea */
+    /* No padding-left needed if the help-and-label-container already aligns the text properly */
+}
+
+/* Ensure textarea occupies full width relative to its parent form-group */
+.form-group textarea {
+    width: 100%; /* Ensure textarea takes full width of its container */
+    margin-top: 0; /* Adjusted since field-description has bottom margin */
+}
+
+/* Revert default form-group textarea margin if needed */
+.form-group textarea {
+    margin-bottom: 15px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .container {
+        padding: 15px;
+    }
+    .top-panels-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    .global-action-buttons-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .global-action-buttons-group button {
+        width: 100%; /* Full width buttons on very small screens */
+    }
+}
